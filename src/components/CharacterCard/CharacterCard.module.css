@@ -1,0 +1,69 @@
+.container {
+  display: flex;
+  background: #333;
+  color: #fff;
+  border-radius: 0.4rem;
+  overflow: hidden;
+}
+
+.container .pictureContainer {
+  width: 200px;
+}
+
+.container .pictureContainer img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.container .content {
+  flex: 1;
+  width: 100%;
+  padding: 1rem;
+}
+
+.container .content .name {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: inherit;
+}
+
+.container .content .name:hover {
+  color: #f08d49;
+  cursor: pointer;
+}
+
+.container .content .status {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  font-size: 0.89rem;
+}
+
+.container .content .status .point {
+  display: block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.container .content .status .point.alive-color {
+  background: limegreen;
+}
+
+.container .content .status .point.dead-color {
+  background: red;
+}
+
+.container .content .status .point.unkknow-color {
+  background: gray;
+}
+
+.container .content .moreInfo .title {
+  color: gray;
+  font-size: 0.89rem;
+  margin-bottom: 0.4rem;
+}

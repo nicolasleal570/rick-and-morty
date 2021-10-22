@@ -1,0 +1,61 @@
+.container {
+  display: flex;
+}
+
+.imgContainer {
+  width: 300px;
+}
+
+.imgContainer img {
+  display: block;
+  width: 100%;
+}
+
+.information {
+  padding: 2rem;
+}
+
+.information h1 {
+  font-size: 3rem;
+}
+
+.statusContainer {
+  display: inline-block;
+  margin: 1rem 0;
+  padding: 6px 1rem;
+  border-radius: 3px;
+}
+
+.statusContainer.Alive {
+  background: rgba(43, 208, 43, 0.4);
+  border: 1px solid #2bd02b;
+  color: #555;
+}
+
+.statusContainer.Dead {
+  background: rgba(208, 43, 43, 0.4);
+  border: 1px solid #d02b2b;
+  color: #444;
+}
+
+.statusContainer.unknown {
+  background: rgba(136, 136, 136, 0.4);
+  border: 1px solid #888;
+  color: #444;
+}
+
+.moreInfo .title {
+  color: gray;
+  font-size: 0.89rem;
+  margin-bottom: 0.4rem;
+}
+
+.moreInfo .backBtn {
+  background: none;
+  border: 1px solid #2bd02b;
+  color: #2bd02b;
+  font-size: 1rem;
+  padding: 6px 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
