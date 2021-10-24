@@ -8,7 +8,7 @@ import CharacterPage from './pages/CharacterPage';
 function Routes() {
   return (
     <Switch>
-      <Route exact path="/characters/:id" component={CharacterPage} />
+      <Route exact path="/characters/:characterId" component={CharacterPage} />
       <Route exact path="/login" component={LoginPage} />
       <Route exact path="/register" component={RegisterPage} />
       <Route exact path="/" component={HomePage} />

@@ -1,21 +1,18 @@
 import Axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import CharactersList from '../components/CharactersList/CharactersList';
 
 function HomePage() {
-  const [isLoading, setIsLoading] = useState(true);
   const [characters, setCharacters] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const fetchCharacters = async () => {
-    try {
-      setIsLoading(true);
-      const res = await Axios.get('https://rickandmortyapi.com/api/character');
-      const charactersData = res.data.results;
-      setCharacters(charactersData);
-      setIsLoading(false);
-    } catch (err) {
-      console.log(err);
-    }
+    setIsLoading(true);
+    const response = await Axios.get(
+      'https://rickandmortyapi.com/api/character'
+    );
+    setCharacters(response.data.results);
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -24,10 +21,10 @@ function HomePage() {
 
   return (
     <>
-      {!isLoading ? (
-        <CharactersList characters={characters} />
+      {isLoading ? (
+        <h1>Loading...</h1>
       ) : (
-        <h2>Loading...</h2>
+        <CharactersList characters={characters} />
       )}
     </>
   );
