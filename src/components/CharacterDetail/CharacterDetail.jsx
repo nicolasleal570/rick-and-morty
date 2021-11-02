@@ -1,8 +1,18 @@
+import { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
+import { UserContext } from '../../context/UserContext';
 import styles from './CharacterDetail.module.css';
 
 function CharacterDetail({ character }) {
   const history = useHistory();
+  const { addCharacterToFavorite } = useContext(UserContext);
+
+  const handleFavorite = async () => {
+    console.log('HANDLE_FAVORITE');
+    await addCharacterToFavorite(character.id);
+  };
+
+  console.log(character);
 
   return (
     <div className={styles.container}>
@@ -46,6 +56,16 @@ function CharacterDetail({ character }) {
             onClick={() => history.goBack()}
           >
             Go back
+          </button>
+        </div>
+
+        <div className={styles.moreInfo} style={{ marginBottom: '1.5rem' }}>
+          <button
+            type="button"
+            className={styles.favoriteBtn}
+            onClick={handleFavorite}
+          >
+            Add to Favorite
           </button>
         </div>
       </article>

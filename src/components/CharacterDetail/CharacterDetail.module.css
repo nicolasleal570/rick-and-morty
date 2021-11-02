@@ -59,3 +59,13 @@
   border-radius: 4px;
   cursor: pointer;
 }
+
+.moreInfo .favoriteBtn {
+  background: none;
+  border: 1px solid #d03e2b;
+  color: #d03e2b;
+  font-size: 1rem;
+  padding: 6px 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}

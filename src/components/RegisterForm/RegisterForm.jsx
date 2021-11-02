@@ -1,13 +1,48 @@
 import styles from './RegisterForm.module.css';
+import { useContext, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { auth } from '../../utils/firebaseConfig';
+import { UserContext } from '../../context/UserContext';
 
 function RegisterForm() {
+  const history = useHistory();
+  const { createUser } = useContext(UserContext);
+
+  const [values, setValues] = useState({
+    name: '',
+    email: '',
+    password: '',
+  });
+
   const handleGoogleLogin = async () => {
     console.log('GOOGLE_LOGIN');
   };
 
+  const handleOnChange = (event) => {
+    const { value, name: inputName } = event.target;
+    console.log({ inputName, value });
+    setValues({ ...values, [inputName]: value });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('REGISTER_SUBMIT');
+    const response = await auth.createUserWithEmailAndPassword(
+      values.email,
+      values.password
+    );
+
+    await createUser(
+      {
+        name: values.name,
+        email: values.email,
+        favorites: [],
+        role: 'admin',
+      },
+      response.user.uid
+    );
+    history.push('/');
+
+    console.log(response.user.uid);
   };
 
   return (
@@ -20,6 +55,8 @@ function RegisterForm() {
             id="name"
             type="text"
             placeholder="Enter your name"
+            value={values.name}
+            onChange={handleOnChange}
           />
         </div>
 
@@ -30,6 +67,8 @@ function RegisterForm() {
             id="email"
             type="email"
             placeholder="Enter your email"
+            value={values.email}
+            onChange={handleOnChange}
           />
         </div>
 
@@ -40,6 +79,8 @@ function RegisterForm() {
             id="password"
             type="password"
             placeholder="Enter your password"
+            value={values.password}
+            onChange={handleOnChange}
           />
         </div>
 
